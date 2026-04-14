@@ -24,18 +24,63 @@
     </header>
 
     <main>
-        <div id="map"></div>
+        <div id="map-view" class="view active">
+            <div id="map"></div>
+        </div>
 
-        <div class="content-area">
-            <div class="filters">
-                <!-- Buttons will be injected by JS -->
+        <div id="list-view" class="view">
+            <div class="content-area">
+                <div class="filters">
+                    <!-- Buttons will be injected by JS -->
+                </div>
+
+                <div class="business-list">
+                    <!-- Cards will be injected by JS -->
+                </div>
             </div>
+        </div>
 
-            <div class="business-list">
-                <!-- Cards will be injected by JS -->
+        <div id="services-view" class="view">
+            <div class="services-container">
+                <h2>Nuestros Servicios</h2>
+                <div class="service-card">
+                    <h3>Marketing Digital</h3>
+                    <p>Gestión de redes sociales, campañas de Ads y SEO para negocios locales.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Desarrollo Web</h3>
+                    <p>Páginas web profesionales, e-commerce y aplicaciones a medida.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Sistemas de Gestión</h3>
+                    <p>Automatización de procesos y software de inventario/ventas.</p>
+                </div>
+                <div class="company-info">
+                    <h3>Tips de Venta</h3>
+                    <ul>
+                        <li>Identifica al tomador de decisiones.</li>
+                        <li>Enfócate en los beneficios, no solo en las características.</li>
+                        <li>Escucha más de lo que hablas.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </main>
+
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="switchView('map-view')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6v14l7-4 8 4 7-4V2l-7 4-8-4-7 4z"></path><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+            <span>Mapa</span>
+        </button>
+        <button class="nav-item" onclick="switchView('list-view')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+            <span>Locales</span>
+        </button>
+        <button class="nav-item" onclick="switchView('services-view')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            <span>Servicios</span>
+        </button>
+    </nav>
 
     <!-- Visit Registration Modal -->
     <div class="modal-overlay">
@@ -47,6 +92,17 @@
                 </button>
             </div>
             <form id="visit-form">
+                <div class="form-group">
+                    <label for="visit-status">Resultado de la visita</label>
+                    <select id="visit-status" required>
+                        <option value="">Selecciona un resultado...</option>
+                        <option value="sold">Vendido / Contratado</option>
+                        <option value="appointment">Cita Programada</option>
+                        <option value="pending">Pendiente / Volver luego</option>
+                        <option value="rejected">Rechazado</option>
+                        <option value="closed">Local Cerrado</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="visit-notes">Notas de la visita</label>
                     <textarea id="visit-notes" rows="4" placeholder="Escribe detalles de la visita..." required></textarea>
