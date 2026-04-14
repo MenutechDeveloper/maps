@@ -7,6 +7,10 @@
     --text-main: #0f172a;
     --text-muted: #64748b;
     --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --info: #3b82f6;
+    --closed: #64748b;
     --border-color: #e2e8f0;
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
@@ -77,9 +81,21 @@ main {
 }
 
 #map {
-    height: 45%;
+    height: 100%;
     width: 100%;
     z-index: 10;
+}
+
+.view {
+    display: none;
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+}
+
+.view.active {
+    display: flex;
+    flex-direction: column;
 }
 
 .content-area {
@@ -87,10 +103,6 @@ main {
     overflow-y: auto;
     background-color: var(--bg-color);
     padding: 1rem;
-    z-index: 15;
-    box-shadow: 0 -4px 6px -1px rgb(0 0 0 / 0.1);
-    border-radius: 1.25rem 1.25rem 0 0;
-    margin-top: -1.25rem;
 }
 
 .filters {
@@ -147,10 +159,11 @@ main {
     transform: scale(0.98);
 }
 
-.business-card.visited {
-    background-color: #f0fdf4;
-    border-color: #bbf7d0;
-}
+.business-card.status-sold { border-left: 4px solid var(--success); }
+.business-card.status-appointment { border-left: 4px solid var(--warning); }
+.business-card.status-pending { border-left: 4px solid var(--info); }
+.business-card.status-rejected { border-left: 4px solid var(--danger); }
+.business-card.status-closed { border-left: 4px solid var(--closed); opacity: 0.7; }
 
 .business-info h3 {
     font-size: 0.9375rem;
@@ -189,8 +202,128 @@ main {
 }
 
 .visit-btn:disabled {
-    background-color: var(--success);
+    background-color: var(--secondary-color);
     box-shadow: none;
+}
+
+.business-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.directions-btn {
+    background-color: #f1f5f9;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--card-bg);
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--border-color);
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    gap: 0.25rem;
+    flex: 1;
+}
+
+.nav-item.active {
+    color: var(--primary-color);
+}
+
+.nav-item svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Services View */
+.services-container {
+    padding: 1.5rem;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.services-container h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.service-card {
+    background-color: var(--card-bg);
+    padding: 1.25rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.service-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.company-info {
+    margin-top: 2rem;
+    background-color: #eff6ff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+.company-info h3 {
+    margin-bottom: 1rem;
+}
+
+.company-info ul {
+    list-style: none;
+}
+
+.company-info li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.875rem;
+}
+
+.company-info li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: #f8fafc;
 }
 
 /* Modal Styles */
