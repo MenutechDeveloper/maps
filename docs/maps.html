@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruta de Ventas - Mapas</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="stats">
+            <span>Meta Diaria</span>
+            <span class="progress-text">0 / 20 locales</span>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="map"></div>
+
+        <div class="content-area">
+            <section class="filters-section">
+                <div class="filters">
+                    <!-- Buttons will be injected by JS -->
+                </div>
+            </section>
+
+            <section class="business-list-section">
+                <div class="business-list">
+                    <!-- Cards will be injected by JS -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Visit Registration Modal -->
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-business-name">Registrar Visita</h2>
+                <button class="close-btn" onclick="closeVisitModal()">&times;</button>
+            </div>
+            <form id="visit-form">
+                <div class="form-group">
+                    <label for="visit-notes">Notas de la visita</label>
+                    <textarea id="visit-notes" rows="4" placeholder="¿Qué pasó en el local?" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="visit-photo">Foto del local</label>
+                    <input type="file" id="visit-photo" accept="image/*">
+                </div>
+                <button type="submit" class="submit-visit">Registrar Visita</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/cloudinary-client.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
