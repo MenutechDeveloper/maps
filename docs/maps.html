@@ -2,18 +2,18 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruta de Ventas - Mapas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ruta de Ventas - Tijuana</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="stats">
-            <span>Meta Diaria</span>
+            <h1>Ruta Fundadores - Centro</h1>
             <span class="progress-text">0 / 20 locales</span>
         </div>
         <div class="progress-container">
@@ -27,17 +27,13 @@
         <div id="map"></div>
 
         <div class="content-area">
-            <section class="filters-section">
-                <div class="filters">
-                    <!-- Buttons will be injected by JS -->
-                </div>
-            </section>
+            <div class="filters">
+                <!-- Buttons will be injected by JS -->
+            </div>
 
-            <section class="business-list-section">
-                <div class="business-list">
-                    <!-- Cards will be injected by JS -->
-                </div>
-            </section>
+            <div class="business-list">
+                <!-- Cards will be injected by JS -->
+            </div>
         </div>
     </main>
 
@@ -46,18 +42,20 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="modal-business-name">Registrar Visita</h2>
-                <button class="close-btn" onclick="closeVisitModal()">&times;</button>
+                <button class="close-btn" onclick="closeVisitModal()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
             </div>
             <form id="visit-form">
                 <div class="form-group">
                     <label for="visit-notes">Notas de la visita</label>
-                    <textarea id="visit-notes" rows="4" placeholder="¿Qué pasó en el local?" required></textarea>
+                    <textarea id="visit-notes" rows="4" placeholder="Escribe detalles de la visita..." required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="visit-photo">Foto del local</label>
-                    <input type="file" id="visit-photo" accept="image/*">
+                    <label for="visit-photo">Capturar Foto</label>
+                    <input type="file" id="visit-photo" accept="image/*" capture="environment">
                 </div>
-                <button type="submit" class="submit-visit">Registrar Visita</button>
+                <button type="submit" class="submit-visit">Guardar Registro</button>
             </form>
         </div>
     </div>
